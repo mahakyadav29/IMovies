@@ -15,6 +15,7 @@ const notificationRoutes = require('./routes/notificationRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 
 const app = express();
+app.set('trust proxy', 1);
 
 // CORS configuration
 const allowedOrigin = process.env.CLIENT_URL || 'http://localhost:5173';

@@ -1,0 +1,58 @@
+# Task 03: System Features
+
+## 1. Customer Features
+- **Account Registration & Login**:
+  - Secure registration with client and server input validation.
+  - JWT-authenticated sessions with persistent login.
+  - Quick 1-click Demo Account filler for faculty demonstrations.
+- **Movie Catalog & Browsing**:
+  - Visual movie grid showcasing release posters, ratings, certificates, and runtime.
+  - Full-text search by movie title and keywords.
+  - Multi-criteria filtering by Genre, Language, and Release Status (Now Showing / Coming Soon).
+  - Clear Filters one-click action.
+- **Detailed Movie Information**:
+  - Comprehensive metadata: synopsis, director, cast members, banner backdrops, certificate, and official trailer link.
+  - Interactive Date Selector tabs for upcoming screenings.
+  - Shows grouped cleanly by Multiplex Theatres with start times and base pricing.
+- **Interactive Visual Seat Selection**:
+  - Real-time seat map organized into 3 tiers: Silver (A-B), Gold (C-D), Platinum (E-F).
+  - Visual indicators for Available, Selected, and Booked seats.
+  - Aisle separation and curved cinema screen orientation.
+  - Dynamic price tallying with multi-seat selection (up to 8 seats).
+  - Real-time synchronization using Socket.IO: seats booked by other users immediately reflect on screen.
+- **Simulated Checkout & Payment Flow**:
+  - Order summary breakdown: movie, theatre, date, time, selected seats, subtotal, and zero convenience charges.
+  - Demonstration selector for Payment Methods: Credit/Debit Card, UPI / QR, Net Banking, Digital Wallet.
+  - Dual Simulation Outcome buttons: "Simulate Payment Success" and "Simulate Payment Failure" to demonstrate robust fault handling.
+- **Digital Ticket Confirmation**:
+  - Ticket confirmation card with unique Booking Reference (`IM-XXXX-XXXX`), barcode/QR visual, and full screening details.
+  - Printable / Save-as-PDF ticket functionality.
+- **Booking History & Cancellation**:
+  - Customer personal booking ledger sorted by newest first.
+  - Cancellation policy check: bookings can be cancelled before show date.
+  - Atomic seat release on cancellation so other users can immediately book them.
+  - Simulated refund logging.
+- **In-App Notifications & Profile**:
+  - Live notification alerts for booking confirmation, payment declines, and cancellations.
+  - User profile view with editable display name and phone number.
+
+## 2. Administrator Features
+- **Protected Administrator Console (`/admin`)**:
+  - Role-based route guard on both frontend (`AdminRoute`) and backend (`requireAdmin` middleware).
+  - Dashboard analytics: Total Simulated Revenue, Total Bookings, Movies Catalog, Active Shows, and Multiplexes count.
+  - Recent Bookings activity feed.
+- **Movie Management**:
+  - View full movie catalog with posters, ratings, certificates, and status.
+  - Add New Movie with validation (title, description, duration, release date, poster URL, trailer, genres).
+  - Edit existing movie metadata.
+  - Delete movie (with safety block if active shows are assigned to it).
+- **Multiplex Theatre Management**:
+  - Add, view, edit, and delete partner multiplex theatres with screen counts, address, and amenities.
+- **Show Scheduling & Seat Layout Generation**:
+  - Schedule screenings by selecting Movie, Multiplex Theatre, Screen, Date, Start Time, and Base Ticket Price.
+  - Automatically generates 60 standard seats with tier price multipliers.
+  - Delete show (guarded against shows with confirmed customer bookings).
+- **Global Bookings & Financial Ledger**:
+  - Comprehensive table of all customer bookings across all cinemas.
+  - Search by Booking Reference.
+  - Status filter (Confirmed vs. Cancelled).
